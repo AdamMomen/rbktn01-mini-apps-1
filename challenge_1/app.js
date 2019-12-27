@@ -130,9 +130,10 @@ function checkHorizontalRow(row) {
 
 //function that adds a x to element
 function play(event, index) {
+  WW
   //create a sub funtion that will the check the rule of the next player
-  event.firstChild.nodeValue === '-' ?
-    event.firstChild.nodeValue = scanBoard(index) : ''
+  event.textContent === '' ?
+    event.textContent = scanBoard(index) : ''
 }
 
 //function that scans the scans the spot if it's empty
@@ -170,10 +171,11 @@ function nextPlayer() {
 // function that will scan the board and put the values in an array
 
 
-// main function self envoked Adds event
+// main function self envoked Adds event listener
 (() => {
   document.querySelectorAll(".grid-item")
     .forEach((one, index) => {
+      console.log('', one.textContent)
       one.addEventListener('click', () => {
         play(one, index)
       });
