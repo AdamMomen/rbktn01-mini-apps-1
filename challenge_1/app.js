@@ -19,13 +19,24 @@ var players = {
     'O': false,
     'X': false,
 }
+
 //input => null 
 //output  => string
 function nextPlayer() {
-    //check if no playing  
-    //check this statment
-    !players['X'] && !players['O'] ? players['X'] = true :
-        !players['X'] && players['O'] ? players['X'] = true && players['O'] = false  :
-    //
-    // each time the function being envoked change the boolean
+
+    if (!players['X'] && !players['O']) {
+        players['X'] = !players['X']
+        return 'X'
+    }
+    if (players['X'] && !players['O']) {
+        players['X'] = !players['X']
+        players['O'] = !players['O']
+        return 'O'
+    }
+    if (!players['X'] && players['O']) {
+        players['X'] = !players['X']
+        players['O'] = !players['O']
+        return 'X'
+    }
+
 }
