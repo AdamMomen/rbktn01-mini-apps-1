@@ -36,7 +36,16 @@ function obj2Arr() {
   }
 }
 
-//
+//check winner
+function checkWinner() {
+  if (checkAllDiagonal() === 'X' || checkAllHorizontalRow() === 'X' || checkAllVerticalColumn() === 'X') {
+    return 'X'
+  }
+  if (checkAllDiagonal() === 'O' || checkAllHorizontalRow() === 'O' || checkAllVerticalColumn() === 'O') {
+    return 'O'
+  }
+  return null;
+}
 //check  all diagonal
 function checkAllDiagonal() {
 
@@ -131,6 +140,10 @@ function scanBoard(index) {
   if (board[index] === '-') {
     board[index] = nextPlayer();
     obj2Arr();
+    var winner = checkWinner()
+    if (winner) {
+      return alert(`winner is ${winner}`)
+    }
     return board[index]
   }
   return;
@@ -157,7 +170,7 @@ function nextPlayer() {
 // function that will scan the board and put the values in an array
 
 
-// main function self envoked
+// main function self envoked Adds event
 (() => {
   document.querySelectorAll(".grid-item")
     .forEach((one, index) => {
