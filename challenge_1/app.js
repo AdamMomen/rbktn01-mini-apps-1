@@ -13,8 +13,10 @@ var board = {
 }
 // object of player movement
 var players = {
-  'O': false,
-  'X': false,
+  'X': { player: "player1", playing: false },
+  'O': { player: "player2", playing: false },
+  // 'O': false,
+  // 'X': false,
 }
 
 //fucntion converts object to 2D array 3X3
@@ -39,7 +41,8 @@ function obj2Arr() {
 //check winner
 function checkWinner() {
   if (checkAllDiagonal() === 'X' || checkAllHorizontalRow() === 'X' || checkAllVerticalColumn() === 'X') {
-    return 'X'
+    return players['X']  // 'X' : {player1: false},
+    // 'O' : {player2: false},
   }
   if (checkAllDiagonal() === 'O' || checkAllHorizontalRow() === 'O' || checkAllVerticalColumn() === 'O') {
     return 'O'
@@ -130,7 +133,6 @@ function checkHorizontalRow(row) {
 
 //function that adds a x to element
 function play(event, index) {
-  WW
   //create a sub funtion that will the check the rule of the next player
   event.textContent === '' ?
     event.textContent = scanBoard(index) : ''
@@ -140,10 +142,11 @@ function play(event, index) {
 function scanBoard(index) {
   if (board[index] === '-') {
     board[index] = nextPlayer();
+    console.log(`Player ${board[index]}`)
     obj2Arr();
     var winner = checkWinner()
     if (winner) {
-      return alert(`winner is ${winner}`)
+      return alert(`Congratulation ${winner.player} You Won! `)
     }
     return board[index]
   }
@@ -153,29 +156,28 @@ function scanBoard(index) {
 //function that alternate between X - O returns the next movement
 function nextPlayer() {
   // debugger;
-  if (!players['X'] && !players['O']) {
-    players['X'] = !players['X']
+  if (!players['X']['playing'] && !players['O']['playing']) {
+    players['X']['playing'] = !players['X']['playing']
     return 'X'
   }
-  if (players['X'] && !players['O']) {
-    players['X'] = !players['X']
-    players['O'] = !players['O']
+  if (players['X']['playing'] && !players['O']['playing']) {
+    players['X']['playing'] = !players['X']['playing']
+    players['O']['playing'] = !players['O']['playing']
     return 'O'
   }
-  if (!players['X'] && players['O']) {
-    players['X'] = !players['X']
-    players['O'] = !players['O']
+  if (!players['X']['playing'] && players['O']['playing']) {
+    players['X']['playing'] = !players['X']['playing']
+    players['O']['playing'] = !players['O']['playing']
     return 'X'
   }
 }
 // function that will scan the board and put the values in an array
 
 
-// main function self envoked Adds event listener
+// main function self envoked Adds event listeneing for the DOM
 (() => {
   document.querySelectorAll(".grid-item")
     .forEach((one, index) => {
-      console.log('', one.textContent)
       one.addEventListener('click', () => {
         play(one, index)
       });
