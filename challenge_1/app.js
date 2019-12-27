@@ -17,7 +17,7 @@ var players = {
   'X': false,
 }
 
-//fucntion converts object to 2D array 
+//fucntion converts object to 2D array 3X3
 function obj2Arr() {
   boardArr = []
   let arr = [];
@@ -36,35 +36,91 @@ function obj2Arr() {
   }
 }
 
+//
+//check  all diagonal
+function checkAllDiagonal() {
 
-checkAllVerticalRow() {
+  let counterO = 0;
+  let counterX = 0;
+
   for (let i = 0; i < boardArr.length; i++) {
-
-    if (checkVerticalRow(i) === 'O')
-  }
-}
-// checking vertical
-function checkVerticalRow(row) {
-  for (let j = 0; j < boardArr.length; j++) {
-    counterX = 0;
-    counterO = 0;
-    for (let i = 0; i < boardArr[j].length; i++) {
-      boardArr[row][i] === 'O' ? counterO++ :
-        boardArr[row][i] === 'X' ? counterX++ : '';
+    for (let j = 0; j < boardArr.length; j++) {
+      if (i + j === 2 || i === j) {
+        boardArr[i][j] === 'O' ? counterO++ :
+          boardArr[i][j] === 'X' ? counterX++ : '';
+      }
     }
   }
   if (counterO > 2) {
-    return 'O'
+    return 'O';
   }
-  if (counterO > 2) {
+  if (counterX > 2) {
     return 'X'
   }
   return null;
 }
 
-//function that adds a x to elemten
+//check all verticalally
+function checkAllVerticalColumn() {
+  for (let i = 0; i < boardArr.length; i++) {
+    if (checkVerticalColumn(i) === 'O') {
+      return 'O'
+    }
+    if (checkVerticalColumn(i) === 'X') {
+      return 'X'
+    }
+  }
+  return null;
+}
+
+//check verticalally
+function checkVerticalColumn(column) {
+  let counterX = 0;
+  let counterO = 0;
+  for (let i = 0; i < boardArr[column].length; i++) {
+    boardArr[i][column] === 'O' ? counterO++ :
+      boardArr[i][column] === 'X' ? counterX++ : '';
+  }
+  if (counterO > 2) {
+    return 'O';
+  }
+  if (counterX > 2) {
+    return 'X'
+  }
+  return null;
+}
+
+// checking all Horizontal
+function checkAllHorizontalRow() {
+  for (let i = 0; i < boardArr.length; i++) {
+    if (checkHorizontalRow(i) === 'O') {
+      return 'O'
+    }
+    if (checkHorizontalRow(i) === 'X') {
+      return 'X'
+    }
+  }
+  return null;
+}
+// checking Horizontal
+function checkHorizontalRow(row) {
+  let counterX = 0;
+  let counterO = 0;
+  for (let i = 0; i < boardArr[row].length; i++) {
+    boardArr[row][i] === 'O' ? counterO++ :
+      boardArr[row][i] === 'X' ? counterX++ : '';
+  }
+  if (counterO > 2) {
+    return 'O';
+  }
+  if (counterX > 2) {
+    return 'X'
+  }
+  return null;
+}
+
+//function that adds a x to element
 function play(event, index) {
-  /// debugger;
   //create a sub funtion that will the check the rule of the next player
   event.firstChild.nodeValue === '-' ?
     event.firstChild.nodeValue = scanBoard(index) : ''
@@ -100,9 +156,13 @@ function nextPlayer() {
 }
 // function that will scan the board and put the values in an array
 
-document.querySelectorAll(".grid-item")
-  .forEach((one, index) => {
-    one.addEventListener('click', () => {
-      play(one, index)
-    });
-  });
+
+// main function self envoked
+(() => {
+  document.querySelectorAll(".grid-item")
+    .forEach((one, index) => {
+      one.addEventListener('click', () => {
+        play(one, index)
+      });
+    })
+})()
