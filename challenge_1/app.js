@@ -9,14 +9,11 @@ var board = {
   6: '-',
   7: '-',
   8: '-',
-
 }
 // object of player movement
 var players = {
   'X': { player: "player1", playing: false },
   'O': { player: "player2", playing: false },
-  // 'O': false,
-  // 'X': false,
 }
 
 //fucntion converts object to 2D array 3X3
