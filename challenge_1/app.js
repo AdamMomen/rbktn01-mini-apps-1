@@ -12,7 +12,7 @@ document.querySelectorAll(".grid-item")
         one.addEventListener('click', () => { play(one) });
     });
 
-
+//re
 // object of player movement
 
 var players = {
@@ -22,7 +22,10 @@ var players = {
 //input => null 
 //output  => string
 function nextPlayer() {
-
+    //check if no playing  
+    //check this statment
+    !players['X'] && !players['O'] ? players['X'] = true :
+        !players['X'] && players['O'] ? players['X'] = true && players['O'] = false  :
     //
     // each time the function being envoked change the boolean
 }
