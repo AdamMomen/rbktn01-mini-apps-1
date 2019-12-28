@@ -173,10 +173,14 @@ function nextPlayer() {
 
 // main function self envoked Adds event listeneing for the DOM
 (() => {
+  var resetBtn = document.querySelectorAll(".Reset")
   document.querySelectorAll(".grid-item")
     .forEach((one, index) => {
       one.addEventListener('click', () => {
         play(one, index)
       });
     })
+  resetBtn.addEventListener('click', () => {
+    //envoke reset function
+  })
 })()
