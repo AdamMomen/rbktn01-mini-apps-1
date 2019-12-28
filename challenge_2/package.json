@@ -1,0 +1,28 @@
+{
+  "name": "cvs",
+  "version": "1.0.0",
+  "description": "Mini app for training on server/client request handling",
+  "main": "server.js",
+  "scripts": {
+    "test": "npm start",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AdamMomen/rbktn01-mini-apps-1.git"
+  },
+  "keywords": [
+    "challenge2",
+    "cvs"
+  ],
+  "author": "Adam Momen",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AdamMomen/rbktn01-mini-apps-1/issues"
+  },
+  "homepage": "https://github.com/AdamMomen/rbktn01-mini-apps-1#readme",
+  "dependencies": {},
+  "devDependencies": {
+    "express": "^4.17.1"
+  }
+}
