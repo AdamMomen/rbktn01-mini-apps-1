@@ -5,8 +5,8 @@ const $submitBTN = $("#submit")
 const $input = $('#input')
 
 // click listening for submit button 
-$submitBTN.click(() => {
-    var value = $('#input').val()
-    $input.val('')
-    console.log(`submitted!!!  ${value}`)
-})
+// $submitBTN.click(() => {
+//     var value = $('#input').val()
+//     $input.val('')
+//     console.log(`submitted!!!  ${value}`)
+// })

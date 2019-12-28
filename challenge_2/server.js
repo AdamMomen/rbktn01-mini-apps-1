@@ -10,3 +10,8 @@ app.listen(port, () => {
     console.log(`listening on port ${port}`)
 });
 exports.app = app;
+
+// create a post method here !!!
+app.post('/', (req, res) => {
+    console.log(req)
+})
