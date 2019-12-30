@@ -76,18 +76,39 @@ class Form2 extends App {
           <br />
           <input type="submit"></input>
         </form>
+        <br />
+
+        <br />
       </div>
     );
   }
 }
-
+//F3 collects credit card #, expiry date, CVV, and billing zip code.
 class Form3 extends App {
   render() {
     return (
       <div>
-        <h1>
-          This is form three !!!
-        </h1>
+        <label name="">FORM3</label>
+        <form >
+          <label name="">credit Card Number</label>
+          <input type="text" name="" id="creditCard#" placeholder="123456789543" />
+          <br />
+
+          <label name="">Expiry Data</label>
+
+          <input type="text" name="" id="expiryData" placeholder="e.g...13/12/2020" />
+          <br />
+
+          <label name="">CVV</label>
+          <input type="text" name="" id="cvv" placeholder="333" />
+          <br />
+          <label name="">billing Zip Code</label>
+          <input type="text" name="" id="billing" placeholder="44ss" />
+          <input type="submit"></input>
+        </form>
+        <br />
+
+        <br />
       </div>
     );
   }
