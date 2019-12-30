@@ -8,28 +8,37 @@ class App extends React.Component {
       Form3: false,
     }
     this.checkout = this.checkout.bind(this);
-    this.
+    this.goToForm2 = this.goToForm2.bind(this);
+    this.goToForm3 = this.goToForm3.bind(this);
   }
   checkout() {
-    console.log("clicked")
     this.setState(state => ({
       Form1: true
     }));
   }
   goToForm2() {
-
+    this.setState(state => ({
+      Form1: false,
+      Form2: true,
+    }));
   }
-  render() {
+  goToForm3() {
+    this.setState(state => ({
+      Form1: false,
+      Form2: false,
+      Form3: true,
+    }));
+  }
 
-    //console.log(this)
+  render() {
     return (
       <div>
         <h1>ADAM</h1>
 
         <button onClick={this.checkout}>Checkout</button>
-        <Form1 Form1={this.state.Form1} />
-        {/* <Form2 />
-        <Form3 /> */}
+        <Form1 Form1={this.state.Form1} goToForm2={this.goToForm2} />
+        <Form2 Form2={this.state.Form2} goToForm3={this.goToForm3} />
+        <Form3 Form3={this.state.Form3} />
 
       </div>
     );
@@ -44,7 +53,6 @@ class Form1 extends React.Component {
 
   }
   render() {
-    // console.log(this.props.isToggled)
     return this.props.Form1 === true ?
       (
         <div>
@@ -67,60 +75,70 @@ class Form1 extends React.Component {
           <br />
 
           <br />
-          <button>NEXT</button>
+          <button onClick={this.props.goToForm2}>NEXT</button>
         </div>
       )
       : '';
   }
 }
 class Form2 extends React.Component {
+  constructor(props) {
+    super(props);
+
+  }
   render() {
-    return (
-      <div>
-        <label name="">FORM2</label>
+    console.log('form2', this.props)
+    return this.props.Form2 === true ?
+      (
+        <div>
+          <label name="">FORM2</label>
 
-        <form
-        //  action="post"
-        >
-          <label name="">First Address</label>
+          <form
+          //  action="post"
+          >
+            <label name="">First Address</label>
 
-          <input type="text" name="" id="Addres1" placeholder="US" />
+            <input type="text" name="" id="Addres1" placeholder="US" />
+            <br />
+
+            <label name="">Second Address</label>
+
+            <input type="text" name="" id="Addres2" placeholder="NYC" />
+            <br />
+
+            <label name="">CITY</label>
+            <input type="text" name="" id="city" placeholder="city" />
+            <br />
+
+            <label name="">State</label>
+
+            <input type="text" name="" id="state" placeholder="state" />
+            <br />
+
+            <label name="">zipCode</label>
+
+            <input type="text" name="" id="zipCode" placeholder="zipCode" />
+
+            <br />
+
+            <br />
+            <input type="submit"></input>
+          </form>
           <br />
-
-          <label name="">Second Address</label>
-
-          <input type="text" name="" id="Addres2" placeholder="NYC" />
+          <button onClick={this.props.goToForm3}>NEXT</button>
           <br />
-
-          <label name="">CITY</label>
-          <input type="text" name="" id="city" placeholder="city" />
-          <br />
-
-          <label name="">State</label>
-
-          <input type="text" name="" id="state" placeholder="state" />
-          <br />
-
-          <label name="">zipCode</label>
-
-          <input type="text" name="" id="zipCode" placeholder="zipCode" />
-
-          <br />
-
-          <br />
-          <input type="submit"></input>
-        </form>
-        <br />
-
-        <br />
-      </div>
-    );
+        </div>
+      ) : '';
   }
 }
 //F3 collects credit card #, expiry date, CVV, and billing zip code.
 class Form3 extends React.Component {
+  constructor(props) {
+    super(props);
+
+  }
   render() {
-    return (
+    return this.props.Form3 === true ? (
       <div>
         <label name="">FORM3</label>
         <form >
@@ -144,7 +162,7 @@ class Form3 extends React.Component {
 
         <br />
       </div>
-    );
+    ) : '';
   }
 }
 ReactDOM.render(<App />, document.getElementById('app'));
