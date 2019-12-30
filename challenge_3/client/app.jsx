@@ -1,45 +1,79 @@
 
 class App extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      Form1: false,
+      Form2: false,
+      Form3: false,
+    }
+    this.checkout = this.checkout.bind(this);
+    this.
+  }
+  checkout() {
+    console.log("clicked")
+    this.setState(state => ({
+      Form1: true
+    }));
+  }
+  goToForm2() {
+
+  }
   render() {
+
+    //console.log(this)
     return (
       <div>
         <h1>ADAM</h1>
-        <Form1 />
-        <Form2 />
-        <Form3 />
+
+        <button onClick={this.checkout}>Checkout</button>
+        <Form1 Form1={this.state.Form1} />
+        {/* <Form2 />
+        <Form3 /> */}
 
       </div>
     );
   }
 }
-class Form1 extends App {
+
+
+class Form1 extends React.Component {
+  // need to put the funcion in the App class
+  constructor(props) {
+    super(props);
+
+  }
   render() {
-    return (
-      <div>
-        <label name="">FORM1</label>
-        <form >
-          <label name="">Name</label>
-          <input type="text" name="" id="name" placeholder="Johny" />
+    // console.log(this.props.isToggled)
+    return this.props.Form1 === true ?
+      (
+        <div>
+          <label name="">FORM1</label>
+          <form >
+            <label name="">Name</label>
+            <input type="text" name="" id="name" placeholder="Johny" />
+            <br />
+
+            <label name="">Email</label>
+
+            <input type="text" name="" id="email" placeholder="Adam@abc.com" />
+            <br />
+
+            <label name="">Password</label>
+            <input type="text" name="" id="password" placeholder="password" />
+            <br />
+            <input type="submit"></input>
+          </form>
           <br />
 
-          <label name="">Email</label>
-
-          <input type="text" name="" id="email" placeholder="Adam@abc.com" />
           <br />
-
-          <label name="">Password</label>
-          <input type="text" name="" id="password" placeholder="password" />
-          <br />
-          <input type="submit"></input>
-        </form>
-        <br />
-
-        <br />
-      </div>
-    );
+          <button>NEXT</button>
+        </div>
+      )
+      : '';
   }
 }
-class Form2 extends App {
+class Form2 extends React.Component {
   render() {
     return (
       <div>
@@ -84,7 +118,7 @@ class Form2 extends App {
   }
 }
 //F3 collects credit card #, expiry date, CVV, and billing zip code.
-class Form3 extends App {
+class Form3 extends React.Component {
   render() {
     return (
       <div>
