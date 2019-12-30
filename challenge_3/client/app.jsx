@@ -47,7 +47,6 @@ class App extends React.Component {
   }
 }
 
-
 class Form1 extends React.Component {
   // need to put the funcion in the App class
   constructor(props) {
@@ -106,10 +105,6 @@ class Form1 extends React.Component {
 }
 class Form2 extends React.Component {
   constructor(props) {
-
-
-
-
     super(props);
     this.state = {
       add1: '',
@@ -195,10 +190,38 @@ class Form3 extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-
+      creditCard: '',
+      expiryDate: '',
+      cvv: '',
+      billing: '',
     }
-  }
+    this.onChangeCredit = this.onChangeCredit.bind(this)
+    this.onChangeExpiry = this.onChangeExpiry.bind(this)
+    this.onChangeCvv = this.onChangeCvv.bind(this)
+    this.onChangeBill = this.onChangeBill.bind(this)
 
+  }
+  onChangeCredit(event) {
+    this.setState({
+      creditCard: event.target.value,
+    })
+  }
+  onChangeExpiry(event) {
+    this.setState({
+      expiryDate: event.target.value,
+    })
+  }
+  onChangeCvv(event) {
+    this.setState({
+      cvv: event.target.value,
+    })
+  }
+  onChangeBill(event) {
+    this.setState({
+      billing: event.target.value,
+    })
+    console.log(this.state.billing)
+  }
   render() {
     return this.props.Form3 === true ? (
       <div>
@@ -206,19 +229,19 @@ class Form3 extends React.Component {
 
         <form >
           <label name="">credit Card Number</label>
-          <input type="text" name="creditCard#" id="creditCard#" placeholder="123456789543" />
+          <input type="text" name="creditCard#" id="creditCard#" placeholder="123456789543" value={this.state.creditCard} onChange={this.onChangeCredit} />
           <br />
 
           <label name="">Expiry Data</label>
-          <input type="text" name="expiryData" id="expiryData" placeholder="e.g...13/12/2020" />
+          <input type="text" name="expiryDate" id="expiryData" placeholder="e.g...13/12/2020" value={this.state.expiryDate} onChange={this.onChangeExpiry} />
           <br />
 
           <label name="">CVV</label>
-          <input type="text" name="cvv" id="cvv" placeholder="333" />
+          <input type="text" name="cvv" id="cvv" placeholder="333" value={this.state.cvv} onChange={this.onChangeCvv} />
           <br />
 
           <label name="">billing Zip Code</label>
-          <input type="number" name="Billing" id="billing" placeholder="44ss" />
+          <input type="number" name="Billing" id="billing" placeholder="44ss" value={this.state.billing} onChange={this.onChangeBill} />
           {/* <input type="submit"></input> */}
         </form>
 
