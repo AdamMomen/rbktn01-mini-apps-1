@@ -1,3 +1,5 @@
+var LinkedStateMixin = require('react-addons-linked-state-mixin');
+var createReactClass = require('create-react-class');
 class App extends React.Component {
   constructor(props) {
     super(props);
@@ -5,9 +7,7 @@ class App extends React.Component {
       Form1: false,
       Form2: false,
       Form3: false,
-      name: '',
-      email: '',
-      password: '',
+
     }
     this.checkout = this.checkout.bind(this);
     this.goToForm2 = this.goToForm2.bind(this);
@@ -38,7 +38,7 @@ class App extends React.Component {
         <h1>ADAM</h1>
 
         <button onClick={this.checkout}>Checkout</button>
-        <Form1 Form1={this.state.Form1} goToForm2={this.goToForm2} name={this.state.name} />
+        <Form1 Form1={this.state.Form1} goToForm2={this.goToForm2} />
         <Form2 Form2={this.state.Form2} goToForm3={this.goToForm3} />
         <Form3 Form3={this.state.Form3} />
 
@@ -83,6 +83,7 @@ class Form1 extends React.Component {
           <label name="">FORM1</label>
           <form >
             <label name="">Name</label>
+            //linkState
             <input type="text" value={this.state.name} id="name" placeholder="Johny" onChange={this.onChangeName} />
             <br />
 
