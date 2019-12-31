@@ -4,9 +4,10 @@
   "description": "implementation of connect4 game from scratch",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "",
     "start": "node server.js",
-    "build": "webpack -watch"
+    "react-dev": "webpack -d --watch  ",
+    "react-server": "webpack-dev-server --open --mode development"
   },
   "author": "AdamMomen",
   "license": "ISC",
@@ -15,5 +16,13 @@
     "express": "^4.17.1",
     "nodemon": "^2.0.2",
     "react-webpack": "^0.4.1"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.7.7",
+    "@babel/preset-env": "^7.7.7",
+    "@babel/preset-react": "^7.7.4",
+    "babel-loader": "^8.0.6",
+    "webpack": "^4.41.5",
+    "webpack-cli": "^3.3.10"
   }
 }
