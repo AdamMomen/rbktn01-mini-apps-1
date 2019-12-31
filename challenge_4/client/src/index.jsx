@@ -1,11 +1,30 @@
 class App extends React.Component {
     constructor(props) {
         super(props);
+        this.state = {
+
+            x: 0,
+            y: 0,
+        }
     }
     render() {
         return (
             <div>
-                <Square />
+                <Square x={5} y={0} />
+                <Square x={5} y={1} />
+                <Square x={5} y={2} />
+                <Square x={5} y={2} />
+                <Square x={5} y={2} />
+                <Square x={5} y={2} />
+                {/* <Square x={5} y={2} />
+                <Square x={5} y={2} />
+                <Square x={5} y={2} />
+                <Square x={5} y={2} />
+                <Square x={5} y={2} />
+                <Square x={5} y={2} />
+                <Square x={5} y={2} />
+                <Square x={5} y={2} /> */}
+
             </div>
 
         )
@@ -16,26 +35,21 @@ class App extends React.Component {
 class Square extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {
 
-            x: 0,
-            y: 0,
-        }
     }
-    createBoard() {
-        const row = 5,
-            col = 5;
-        return {
-
-            for(let i = 0 ; i<row ; i++) {
-
+    render() {
+        var squares = [];
+        for (let i = 0; i < this.props.x; i++) {
+            // need to style them here
+            squares.push(< div key={i} className="col" data-x={this.props.x} data-y={this.props.y}></div>)
         }
+        return (
+
+            <div
+                className="row"
+            >{squares}</div>
+
+        )
     }
-}
-render() {
-    return (
-        <div></div>
-    )
-}
 }
 ReactDOM.render(<App />, document.getElementById('app'));
